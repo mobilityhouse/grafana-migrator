@@ -22,6 +22,7 @@ def convert_field(value):
 def convert_metrics(metric):
   metric["field"] = convert_field(metric["field"])
   metric.pop("inlineScript", None)
+  metric.pop("settings", None)
   return metric
 
 def convert_target(target):
