@@ -47,7 +47,7 @@ def convert(data):
   return data
 
 def replace_templating(data):
-  reference = retrieve_input(f"/tmp/reference.json")
+  reference = retrieve_input(f"/tmp/templating.json")
   a = data["templating"]
   b = reference["templating"]
   data["templating"] = reference["templating"]
