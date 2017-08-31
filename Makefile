@@ -21,4 +21,12 @@ build:
 		${TAG} \
 		python config.py
 
-.PHONY: image shell
+convert:
+	${DOCKER} run --rm -it  \
+		-v ${PWD}/src:/bench \
+		-v ${PWD}/in:/tmp/in \
+		-v ${PWD}/out:/tmp/out \
+		${TAG} \
+		python convert.py
+
+.PHONY: build convert image
