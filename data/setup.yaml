@@ -1,0 +1,4 @@
+host: grafana.tmh.cloud
+port: 3000
+endpoint: /api/dashboards/home
+datasource: tmh_controller_metric
