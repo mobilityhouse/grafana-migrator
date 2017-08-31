@@ -13,7 +13,7 @@ shell:
 		${TAG} \
 		/bin/bash
 
-build:
+apply:
 	${DOCKER} run --rm -it  \
 		-v ${PWD}/data/secret:/tmp/secret \
 		-v ${PWD}/data/setup.yaml:/tmp/setup.yaml \
@@ -31,4 +31,4 @@ convert:
 		${TAG} \
 		python convert.py
 
-.PHONY: build convert image
+.PHONY: apply convert image
