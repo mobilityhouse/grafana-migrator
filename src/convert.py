@@ -31,6 +31,7 @@ def convert_target(target):
 
 def convert_panel(panel):
   panel["targets"] = list(map(convert_target, panel["targets"]))
+  panel["datasource"] = "tmh_controller_metric"
   return panel
 
 def convert_row(row):
