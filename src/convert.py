@@ -2,7 +2,7 @@ import os
 import json, yaml
 
 def retrieve_config():
-  with open("/tmp/setup.yaml", "r") as f:
+  with open("/data/setup.yaml", "r") as f:
     return yaml.load(f)
 
 def retrieve_input(filename):
@@ -54,7 +54,7 @@ def convert(data):
   return data
 
 def replace_templating(data):
-  reference = retrieve_input(f"/tmp/templating.json")
+  reference = retrieve_input(f"/data/templating.json")
   a = data["templating"]
   b = reference["templating"]
   data["templating"] = reference["templating"]

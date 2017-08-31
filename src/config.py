@@ -2,15 +2,15 @@ import os
 import http.client, csv , json, re, yaml
 
 def retrieve_secret():
-  with open("/tmp/secret", "r") as f:
-    return f.read()
+  with open("/data/secret.yaml", "r") as f:
+    return yaml.load(f)["secret"]
 
 def retrieve_config():
-  with open("/tmp/setup.yaml", "r") as f:
+  with open("/data/setup.yaml", "r") as f:
     return yaml.load(f)
 
 config = retrieve_config()
-secret = config["secret"] # retrieve_secret()
+secret = retrieve_secret()
 
 print(f"things could be easier {secret}")
 print(config)

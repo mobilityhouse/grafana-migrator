@@ -7,16 +7,14 @@ image:
 
 shell:
 	${DOCKER} run --rm -it  \
-		-v ${PWD}/data/secret:/tmp/secret \
-		-v ${PWD}/data/setup.yaml:/tmp/setup.yaml \
+		-v ${PWD}/data:/data \
 		-v ${PWD}/src:/bench \
 		${TAG} \
 		/bin/bash
 
 apply:
 	${DOCKER} run --rm -it  \
-		-v ${PWD}/data/secret:/tmp/secret \
-		-v ${PWD}/data/setup.yaml:/tmp/setup.yaml \
+		-v ${PWD}/data:/data \
 		-v ${PWD}/out:/tmp/out \
 		-v ${PWD}/src:/bench \
 		${TAG} \
@@ -25,8 +23,7 @@ apply:
 convert:
 	${DOCKER} run --rm -it  \
 		-v ${PWD}/src:/bench \
-		-v ${PWD}/data/templating.json:/tmp/templating.json \
-		-v ${PWD}/data/setup.yaml:/tmp/setup.yaml \
+		-v ${PWD}/data:/data \
 		-v ${PWD}/in:/tmp/in \
 		-v ${PWD}/out:/tmp/out \
 		${TAG} \
