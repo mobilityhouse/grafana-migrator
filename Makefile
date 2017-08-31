@@ -24,6 +24,7 @@ build:
 convert:
 	${DOCKER} run --rm -it  \
 		-v ${PWD}/src:/bench \
+		-v ${PWD}/data/reference.json:/tmp/reference.json \
 		-v ${PWD}/in:/tmp/in \
 		-v ${PWD}/out:/tmp/out \
 		${TAG} \

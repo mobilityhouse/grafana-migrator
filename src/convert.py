@@ -35,13 +35,25 @@ def convert_row(row):
   row["panels"] = list(map(convert_panel, row["panels"]))
   return row
 
+def convert_templating(templating):
+  #templating["list"] = 
+  return templating
+
 def convert(data):
   data["rows"] = list(map(convert_row, data["rows"]))
+  data["templating"] = convert_templating(data["templating"])
   return data
 
+def replace_templating(data):
+  reference = retrieve_input(f"/tmp/reference.json")
+  a = data["templating"]
+  b = reference["templating"]
+  data["templating"] = reference["templating"]
+  return data
 # targets[metrics.field] currentSOC -> message.currentSOC
 # metrics
 for filename in os.listdir("/tmp/in"):
   with open(f"/tmp/out/{filename}", "w") as destination:
-    data = convert(retrieve_input(f"/tmp/in/{filename}"))
+    print(f"Generation: /tmp/out/{filename}")
+    data = replace_templating(convert(retrieve_input(f"/tmp/in/{filename}")))
     json.dump(data, destination, indent=2)
