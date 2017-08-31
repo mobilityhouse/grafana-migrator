@@ -1,5 +1,9 @@
 import os
-import json
+import json, yaml
+
+def retrieve_config():
+  with open("/tmp/setup.yaml", "r") as f:
+    return yaml.load(f)
 
 def retrieve_input(filename):
   with open(filename, "r") as f:
@@ -9,6 +13,7 @@ def produce_output(filename):
   with open(filename, "w") as f:
     return json.dump(content, filename, indent=2)
 
+configuration = retrieve_config()
 #def convert_data_row(row):
 #  print(row)
 #  return row
@@ -31,7 +36,8 @@ def convert_target(target):
 
 def convert_panel(panel):
   panel["targets"] = list(map(convert_target, panel["targets"]))
-  panel["datasource"] = "tmh_controller_metric"
+  print(configuration)
+  panel["datasource"] = configuration["datasource"]
   return panel
 
 def convert_row(row):
