@@ -17,6 +17,7 @@ build:
 	${DOCKER} run --rm -it  \
 		-v ${PWD}/data/secret:/tmp/secret \
 		-v ${PWD}/data/setup.yaml:/tmp/setup.yaml \
+		-v ${PWD}/out:/tmp/out \
 		-v ${PWD}/src:/bench \
 		${TAG} \
 		python config.py
